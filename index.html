@@ -3,88 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MANAV | Editor Verse</title>
-    <!-- Importing dynamic graffiti-style action fonts -->
+    <title>HAXTON EDITZ | Portfolio</title>
+    <!-- Importing dynamic action & graffiti fonts -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Bangers&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css?v=3.0">
+    <link href="https://googleapis.com/css2?family=Bangers&family=Permanent+Marker&family=Space+Grotesk:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css?v=4.0">
 </head>
 <body>
 
-    <!-- CHROMATIC GLITCH HERO -->
-    <header class="hero">
-        <div class="halftone-overlay"></div>
-        <div class="hero-content">
-            <p class="tagline">Post-Production // Multiverse</p>
-            <h1 class="glitch-text" data-text="MANAV">MANAV</h1>
-            <p class="subtitle">Video Editor & Motion Designer</p>
-            <a href="#work" class="spider-btn">LEAP OF FAITH</a>
-        </div>
-    </header>
+    <!-- HALFTONE COMIC TEXTURE OVERLAY -->
+    <div class="halftone-overlay"></div>
 
-    <!-- COMIC BOOK GRID SECTION -->
-    <section id="work" class="comic-section">
-        <div class="section-title-wrap">
-            <h2 class="comic-title">SELECTED MISSIONS</h2>
+    <!-- HEADER / NAVIGATION -->
+    <nav class="navbar">
+        <div class="logo">HAXTON<span>EDITZ</span></div>
+        <div class="nav-links">
+            <a href="#about">HOME</a>
+            <a href="#about">ABOUT</a>
+            <a href="#work">WORK</a>
+            <a href="#skills">SKILLS</a>
+            <a href="#contact">CONTACT</a>
         </div>
-        
-        <div class="comic-grid">
-            <!-- Panel 1 -->
-            <div class="comic-panel">
-                <div class="panel-tag">PANEL // 01</div>
-                <div class="video-container">
+        <a href="#contact" class="nav-cta">LET'S WORK!</a>
+    </nav>
+
+    <!-- MAIN COMIC BOOK CANVAS CONTAINER -->
+    <main class="comic-canvas">
+
+        <!-- ROW 1: HERO & MAIN HERO ART -->
+        <div class="grid-row row-hero">
+            <!-- Left Panel: Text Content -->
+            <div class="panel hero-text-panel">
+                <span class="sticker-yo">YO! I'M</span>
+                <h1 class="main-title">MANAV</h1>
+                <p class="tagline-badge">VIDEO EDITOR / MOTION DESIGNER</p>
+                
+                <div class="hero-statement">
+                    I TURN RAW FOOTAGE <br><span class="highlight-red">INTO STORIES.</span>
+                </div>
+                
+                <p class="hero-subtext">I edit with emotion, effect and energy to make every frame count.</p>
+                
+                <a href="#work" class="action-btn btn-blue">WATCH SHOWREEL <span>➔</span></a>
+                <span class="frame-tag">FRAME 001</span>
+            </div>
+
+            <!-- Right Panel: Massive Leap of Faith Art/Video -->
+            <div class="panel hero-image-panel">
+                <div class="rec-indicator">REC 🔴</div>
+                <!-- Dynamic Spider-Verse Background Image Asset -->
+                <img src="https://unsplash.com" alt="Spider-Man Leap" class="hero-bg-art">
+                <div class="boom-sticker">BOOM!</div>
+                <div class="caption-block">EVERY FRAME TELLS A STORY</div>
+            </div>
+        </div>
+
+        <!-- ROW 2: MAIN SHOWREEL SCREENER -->
+        <div class="grid-row row-showreel">
+            <div class="panel showreel-panel">
+                <div class="showreel-header">
+                    <span class="year-badge">2026 SHOWREEL</span>
+                    <h2>SHOWREEL <span class="highlight-red">PLAY ➔</span></h2>
+                </div>
+                
+                <div class="video-container main-reel">
+                    <!-- Replace with your main YouTube Showreel Embed Link -->
                     <iframe src="https://youtube.com" allowfullscreen></iframe>
                 </div>
-                <div class="panel-details">
-                    <h3>CINEMATIC REEL</h3>
-                    <p>High impact pacing, rhythm edits, and frame manipulation layouts.</p>
+                
+                <div class="side-sticker-text">PRESS PLAY TO SEE THE MAGIC</div>
+            </div>
+        </div>
+
+        <!-- ROW 3: SELECTED VIDEOS GRID -->
+        <section id="work" class="grid-row row-work">
+            <div class="work-intro-block">
+                <h2 class="section-title">SELECTED WORK <span>⚡</span></h2>
+                <p class="section-desc">A few things I've edited and brought to life.</p>
+                <a href="#contact" class="view-all-link">VIEW ALL WORK ➔</a>
+            </div>
+
+            <div class="portfolio-grid">
+                <!-- Project 1 -->
+                <div class="work-card">
+                    <div class="card-num">01</div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-label">COMMERCIAL</div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="work-card">
+                    <div class="card-num">02</div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-label">GAMING</div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="work-card">
+                    <div class="card-num">03</div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-label">SOCIAL MEDIA</div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="work-card">
+                    <div class="card-num">04</div>
+                    <div class="video-container">
+                        <iframe src="https://youtube.com" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-label">CINEMATIC</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROW 4: ABOUT, SOFTWARE TOOLS & SERVICES -->
+        <div class="grid-row row-info" id="about">
+            <!-- About Me Card -->
+            <div class="panel info-panel-about">
+                <h3 class="panel-heading">ABOUT ME ➔</h3>
+                <p>I'm a video editor and motion designer who loves creating edits that hit different. My style is fast, dynamic and full of energy.</p>
+                <a href="#contact" class="mini-btn">MORE ABOUT ME ➔</a>
+            </div>
+
+            <!-- Software Tools -->
+            <div id="skills" class="panel info-panel-tools">
+                <h3 class="panel-heading">TOOLS I USE</h3>
+                <div class="tools-layout-grid">
+                    <div class="tool-badge pr">Pr</div>
+                    <div class="tool-badge ae">Ae</div>
+                    <div class="tool-badge ps">Ps</div>
+                    <div class="tool-badge dr"><span>DaVinci</span></div>
                 </div>
             </div>
 
-            <!-- Panel 2 -->
-            <div class="comic-panel">
-                <div class="panel-tag">PANEL // 02</div>
-                <div class="video-container">
-                    <iframe src="https://youtube.com" allowfullscreen></iframe>
-                </div>
-                <div class="panel-details">
-                    <h3>RETENTION REELS</h3>
-                    <p>Short-form vertical video assets with complex typography styling.</p>
-                </div>
-            </div>
-
-            <!-- Panel 3 -->
-            <div class="comic-panel">
-                <div class="panel-tag">PANEL // 03</div>
-                <div class="video-container">
-                    <iframe src="https://youtube.com" allowfullscreen></iframe>
-                </div>
-                <div class="panel-details">
-                    <h3>MOTION DESIGN</h3>
-                    <p>Compositing graphics, keyframed transitions, and stylized asset renders.</p>
-                </div>
+            <!-- What I Do / Services List -->
+            <div class="panel info-panel-services">
+                <h3 class="panel-heading-yellow">WHAT I DO ⚡</h3>
+                <ul class="services-list">
+                    <li>VIDEO EDITING</li>
+                    <li>MOTION GRAPHICS</li>
+                    <li>COLOR GRADING</li>
+                    <li>SOUND DESIGN</li>
+                    <li>VISUAL EFFECTS</li>
+                </ul>
             </div>
         </div>
-    </section>
 
-    <!-- ABOUT / ORIGIN STORY SECTION -->
-    <section class="origin-section">
-        <div class="speech-bubble">
-            <span class="bubble-title">ORIGIN STORY</span>
-            <p>Alright, let's do this one last time. I'm Manav, a visual developer editing and cutting dynamic footage across the timeline. I bend frames, construct timing, and bring pure motion aesthetics into post-production workflows.</p>
-        </div>
-    </section>
+        <!-- ROW 5: FOOTER CONTACT BLOCK -->
+        <section id="contact" class="grid-row row-footer-contact">
+            <div class="panel contact-cta-panel">
+                <h2 class="footer-cta-title">HAVE A PROJECT IN MIND?</h2>
+                <p class="footer-cta-sub">Let's create something amazing together and bring your ideas to life!</p>
+                <a href="mailto:manavpatel2511@gmail.com" class="action-btn btn-red">LET'S WORK TOGETHER ➔</a>
+            </div>
 
-    <!-- CONTACT / CALL TO ACTION -->
-    <section id="contact" class="spider-contact">
-        <h2>LET'S TEAM UP</h2>
-        <p>Send a signal directly to my inbox.</p>
-        <a href="mailto:manavpatel2511@gmail.com" class="contact-link">manav25110@gmail.com</a>
-    </section>
+            <div class="panel contact-links-panel">
+                <div class="meta-link-row">🌐 <span>@haxton.editz</span></div>
+                <div class="meta-link-row">✉️ <span>manavpatel2511@gmail.com</span></div>
+                <div class="meta-link-row">📍 <span>India</span></div>
+            </div>
+        </section>
+
+    </main>
 
     <footer>
-        <p>Designed across dimensions &copy; 2026 MANAV</p>
+        <p>MANAV PORTFOLIO VERSE &copy; 2026. ALL RIGHTS RESERVED.</p>
     </footer>
 
 </body>
