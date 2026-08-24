@@ -1,1502 +1,1587 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>MANAV PATEL — Video Editor</title>
-
-<!-- Google Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<style>
-/* =========================================================
-   RESET
-========================================================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background: #080808;
-    color: white;
-    font-family: "Inter", sans-serif;
-    overflow-x: hidden;
-}
-
-/* =========================================================
-   VARIABLES
-========================================================= */
-
-:root {
-    --red: #ff2635;
-    --blue: #4427ff;
-    --purple: #9c2cff;
-    --yellow: #ffd928;
-    --white: #f5f5f5;
-    --black: #080808;
-}
-
-/* =========================================================
-   COMIC BACKGROUND
-========================================================= */
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 999;
-
-    background-image:
-        radial-gradient(circle, rgba(255,255,255,.08) 1px, transparent 1px);
-
-    background-size: 7px 7px;
-    opacity: .12;
-    mix-blend-mode: screen;
-}
-
-/* =========================================================
-   NAVBAR
-========================================================= */
-
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 80px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 5vw;
-
-    z-index: 100;
-
-    background: rgba(8,8,8,.72);
-    backdrop-filter: blur(12px);
-
-    border-bottom: 1px solid rgba(255,255,255,.08);
-}
-
-.logo {
-    font-family: "Bangers", cursive;
-    font-size: 34px;
-    letter-spacing: 2px;
-
-    transform: rotate(-3deg);
-}
-
-.logo span {
-    background: var(--yellow);
-    color: black;
-    padding: 2px 10px;
-    font-size: 15px;
-    display: block;
-    width: fit-content;
-
-    margin-left: 20px;
-    margin-top: -5px;
-
-    transform: rotate(3deg);
-}
-
-.nav-links {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 800;
-    font-size: 13px;
-    text-transform: uppercase;
-
-    position: relative;
-}
-
-.nav-links a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -7px;
-    width: 0;
-    height: 3px;
-    background: var(--yellow);
-
-    transition: .3s;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-.nav-cta {
-    background: var(--yellow);
-    color: black;
-    padding: 12px 20px;
-
-    font-family: "Bangers";
-    font-size: 18px;
-    text-decoration: none;
-
-    transform: rotate(3deg);
-
-    box-shadow: 5px 5px 0 var(--red);
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MANAV EDITZ — Video Editor & Motion Designer</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    transition: .25s;
-}
-
-.nav-cta:hover {
-    transform: rotate(-2deg) scale(1.05);
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-/* =========================================================
-   GENERAL
-========================================================= */
+        body {
+            background: #070707;
+            color: #ffffff;
+            font-family: "Inter", sans-serif;
+            overflow-x: hidden;
+        }
 
-section {
-    padding: 120px 7vw;
-    position: relative;
-}
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-.container {
-    max-width: 1400px;
-    margin: auto;
-}
+        img {
+            max-width: 100%;
+            display: block;
+        }
 
-.comic-title {
-    font-family: "Bangers", cursive;
-    font-size: clamp(55px, 8vw, 120px);
-    line-height: .85;
-    letter-spacing: 2px;
 
-    text-shadow:
-        5px 5px 0 var(--red),
-        10px 10px 0 var(--blue);
-}
+        /* =========================================================
+           VARIABLES
+        ========================================================= */
 
-.red {
-    color: var(--red);
-}
+        :root {
+            --black: #070707;
+            --white: #f7f7f7;
+            --red: #ff2438;
+            --blue: #3824ff;
+            --yellow: #ffd51f;
+            --purple: #7b2cff;
+        }
 
-.yellow {
-    color: var(--yellow);
-}
 
-.blue {
-    color: #5f53ff;
-}
+        /* =========================================================
+           COMIC BACKGROUND
+        ========================================================= */
 
-/* =========================================================
-   HERO
-========================================================= */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -2;
 
-.hero {
-    min-height: 100vh;
+            background-image:
+                radial-gradient(rgba(255,255,255,0.12) 1px, transparent 1px);
 
-    display: flex;
-    align-items: center;
+            background-size: 8px 8px;
+            opacity: 0.18;
+        }
 
-    padding-top: 120px;
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
 
-    background:
-        radial-gradient(circle at 20% 30%, rgba(255,0,40,.2), transparent 35%),
-        radial-gradient(circle at 80% 50%, rgba(75,30,255,.2), transparent 35%);
-}
+            background:
+                radial-gradient(circle at 15% 20%, rgba(255,0,50,.15), transparent 25%),
+                radial-gradient(circle at 85% 35%, rgba(50,30,255,.14), transparent 25%),
+                radial-gradient(circle at 50% 90%, rgba(255,200,0,.08), transparent 25%);
+        }
 
-.hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: 50px;
-    align-items: center;
-}
 
-.hero-copy {
-    position: relative;
-    z-index: 2;
-}
+        /* =========================================================
+           NAVBAR
+        ========================================================= */
 
-.small-tag {
-    display: inline-block;
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
 
-    background: var(--red);
-    color: white;
+            background: rgba(7,7,7,.92);
+            border-bottom: 1px solid rgba(255,255,255,.12);
 
-    font-family: "Bangers";
-    font-size: 25px;
+            backdrop-filter: blur(12px);
+        }
 
-    padding: 8px 18px;
+        .nav {
+            max-width: 1400px;
+            margin: auto;
 
-    transform: rotate(-3deg);
+            height: 90px;
 
-    margin-bottom: 15px;
-}
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-.hero-name {
-    font-family: "Bangers";
-    font-size: clamp(80px, 11vw, 170px);
-    line-height: .8;
+            padding: 0 40px;
+        }
 
-    letter-spacing: 3px;
 
-    position: relative;
+        /* LOGO */
 
-    text-shadow:
-        5px 0 var(--red),
-        -5px 0 var(--blue);
-}
+        .logo {
+            position: relative;
+            font-family: "Bangers", cursive;
+            font-size: 42px;
+            line-height: .8;
+            letter-spacing: 2px;
 
-.role {
-    display: inline-block;
+            transform: rotate(-3deg);
 
-    margin-top: 20px;
+            text-shadow:
+                5px 4px 0 var(--red),
+                -4px -3px 0 var(--blue);
+        }
 
-    background: var(--yellow);
-    color: black;
+        .logo span {
+            display: block;
 
-    padding: 10px 20px;
+            width: fit-content;
 
-    font-weight: 900;
-    font-size: 18px;
+            margin-top: 8px;
+            margin-left: 25px;
 
-    transform: rotate(-2deg);
+            padding: 4px 12px;
 
-    box-shadow: 7px 7px 0 var(--red);
-}
+            font-family: "Inter", sans-serif;
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 1px;
 
-.hero-description {
-    max-width: 550px;
+            color: #000;
+            background: var(--yellow);
 
-    margin-top: 35px;
+            transform: rotate(-2deg);
 
-    font-size: 18px;
-    line-height: 1.7;
+            box-shadow: 5px 5px 0 var(--red);
+        }
 
-    color: #d5d5d5;
-}
 
-.hero-description strong {
-    color: var(--red);
-}
+        /* NAV LINKS */
 
-.hero-buttons {
-    margin-top: 35px;
+        .nav-links {
+            display: flex;
+            gap: 42px;
+            align-items: center;
+        }
 
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 900;
+            text-transform: uppercase;
 
-.btn {
-    display: inline-block;
+            position: relative;
+        }
 
-    padding: 15px 25px;
+        .nav-links a::after {
+            content: "";
 
-    text-decoration: none;
+            position: absolute;
+            left: 0;
+            bottom: -8px;
 
-    font-weight: 900;
-    text-transform: uppercase;
+            width: 0;
+            height: 3px;
 
-    border: 3px solid white;
+            background: var(--yellow);
 
-    transition: .3s;
-}
+            transition: .25s ease;
+        }
 
-.btn-primary {
-    background: var(--blue);
-    color: white;
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
-    box-shadow: 7px 7px 0 var(--red);
-}
 
-.btn-secondary {
-    color: white;
-    background: transparent;
-}
+        /* CONTACT BUTTON */
 
-.btn:hover {
-    transform: translate(-4px,-4px);
-}
+        .nav-button {
+            padding: 15px 22px;
 
-/* =========================================================
-   HERO VIDEO PANEL
-========================================================= */
+            background: var(--yellow);
+            color: #000;
 
-.hero-panel {
-    position: relative;
+            font-weight: 900;
+            text-transform: uppercase;
 
-    transform: rotate(2deg);
+            transform: rotate(2deg);
 
-    border: 5px solid white;
+            box-shadow: 7px 7px 0 var(--red);
 
-    background: #111;
+            transition: .2s ease;
+        }
 
-    box-shadow:
-        15px 15px 0 var(--red),
-        -10px 10px 0 var(--blue);
+        .nav-button:hover {
+            transform: rotate(-2deg) translateY(-4px);
+            box-shadow: 10px 10px 0 var(--blue);
+        }
 
-    overflow: hidden;
-}
 
-.hero-panel img {
-    width: 100%;
-    height: 620px;
+        /* =========================================================
+           GENERAL
+        ========================================================= */
 
-    object-fit: cover;
+        section {
+            max-width: 1400px;
+            margin: auto;
+            padding: 130px 50px;
+        }
 
-    display: block;
+        .section-label {
+            font-family: "Bangers", cursive;
+            font-size: 24px;
+            color: var(--yellow);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
 
-    filter: saturate(1.3) contrast(1.15);
-}
 
-.rec {
-    position: absolute;
+        /* =========================================================
+           HERO
+        ========================================================= */
 
-    top: 25px;
-    right: 25px;
+        #home {
+            min-height: 100vh;
 
-    background: var(--red);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
 
-    padding: 10px 18px;
+            align-items: center;
+            gap: 60px;
 
-    font-weight: 900;
+            padding-top: 150px;
+        }
 
-    transform: rotate(-3deg);
-}
 
-.rec::before {
-    content: "●";
-    margin-right: 8px;
-}
+        /* COMIC WORD */
 
-.boom {
-    position: absolute;
+        .comic-small {
+            display: inline-block;
 
-    right: 15px;
-    bottom: 30px;
+            padding: 8px 15px;
 
-    background: var(--blue);
+            background: var(--red);
 
-    padding: 20px;
+            font-weight: 900;
 
-    font-family: "Bangers";
-    font-size: 40px;
+            transform: rotate(-3deg);
 
-    transform: rotate(-8deg);
+            box-shadow: 7px 7px 0 var(--blue);
 
-    clip-path: polygon(
-        50% 0%,
-        61% 18%,
-        78% 7%,
-        81% 28%,
-        100% 35%,
-        84% 50%,
-        96% 70%,
-        74% 69%,
-        68% 100%,
-        50% 82%,
-        30% 98%,
-        28% 73%,
-        0% 77%,
-        17% 55%,
-        0% 38%,
-        23% 31%,
-        22% 7%,
-        40% 17%
-    );
-}
+            margin-bottom: 25px;
+        }
 
-/* =========================================================
-   SHOWREEL
-========================================================= */
 
-.showreel {
-    padding-top: 80px;
-}
+        .hero-title {
+            font-family: "Bangers", cursive;
 
-.showreel-panel {
-    position: relative;
+            font-size: clamp(90px, 11vw, 180px);
 
-    border: 5px solid white;
+            line-height: .8;
 
-    transform: rotate(-1deg);
+            letter-spacing: 4px;
 
-    overflow: hidden;
+            transform: skew(-4deg);
 
-    background: #151515;
+            color: white;
 
-    box-shadow: 12px 12px 0 var(--blue);
-}
+            text-shadow:
+                8px 7px 0 var(--red),
+                -7px -6px 0 var(--blue);
+        }
 
-.showreel-panel img {
-    width: 100%;
-    height: 650px;
 
-    object-fit: cover;
+        .hero-role {
+            display: inline-block;
 
-    filter: saturate(1.4);
-}
+            margin-top: 35px;
 
-.showreel-overlay {
-    position: absolute;
-    inset: 0;
+            padding: 15px 25px;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+            background: var(--yellow);
+            color: #000;
 
-    background: rgba(0,0,0,.35);
-}
+            font-weight: 900;
+            font-size: 18px;
 
-.showreel-title {
-    font-family: "Bangers";
-    font-size: clamp(70px, 10vw, 150px);
+            transform: rotate(-2deg);
 
-    text-shadow:
-        7px 7px 0 var(--red),
-        -5px -5px 0 var(--blue);
-}
+            box-shadow: 8px 8px 0 var(--red);
+        }
 
-.play-button {
-    width: 100px;
-    height: 100px;
 
-    border-radius: 50%;
+        .hero-description {
+            max-width: 650px;
 
-    background: var(--red);
+            margin-top: 35px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+            font-size: 20px;
+            line-height: 1.7;
 
-    font-size: 35px;
+            color: #d0d0d0;
+        }
 
-    cursor: pointer;
+        .hero-description strong {
+            color: var(--red);
+        }
 
-    border: 5px solid white;
 
-    transition: .3s;
-}
+        /* HERO BUTTONS */
 
-.play-button:hover {
-    transform: scale(1.15) rotate(5deg);
-}
+        .buttons {
+            display: flex;
+            gap: 20px;
 
-/* =========================================================
-   WORK
-========================================================= */
+            margin-top: 35px;
+        }
 
-.work {
-    background:
-        radial-gradient(circle at 80% 20%, rgba(255,30,50,.12), transparent 30%);
-}
+        .button {
+            display: inline-block;
 
-.section-heading {
-    margin-bottom: 60px;
-}
+            padding: 18px 28px;
 
-.section-heading p {
-    margin-top: 25px;
-    max-width: 500px;
+            font-weight: 900;
+            text-transform: uppercase;
 
-    color: #aaa;
-    line-height: 1.7;
-}
+            border: 3px solid white;
 
-.work-grid {
-    display: grid;
+            transition: .2s ease;
+        }
 
-    grid-template-columns: repeat(5, 1fr);
+        .button.primary {
+            background: var(--blue);
 
-    gap: 18px;
-}
+            box-shadow:
+                7px 7px 0 var(--red);
+        }
 
-.work-card {
-    position: relative;
+        .button.secondary {
+            background: transparent;
+        }
 
-    border: 4px solid white;
+        .button:hover {
+            transform: translate(-4px,-4px);
+            box-shadow: 10px 10px 0 var(--red);
+        }
 
-    background: #151515;
 
-    overflow: hidden;
+        /* HERO VIDEO PANEL */
 
-    transition: .4s;
+        .hero-panel {
+            position: relative;
 
-    cursor: pointer;
-}
+            min-height: 600px;
 
-.work-card:nth-child(1) {
-    transform: rotate(-3deg);
-}
+            border: 5px solid white;
 
-.work-card:nth-child(2) {
-    transform: rotate(2deg);
-}
+            transform: rotate(2deg);
 
-.work-card:nth-child(3) {
-    transform: rotate(-2deg);
-}
+            background:
+                linear-gradient(135deg, #171717, #050505);
 
-.work-card:nth-child(4) {
-    transform: rotate(3deg);
-}
+            box-shadow:
+                12px 12px 0 var(--red),
+                -10px -10px 0 var(--blue);
 
-.work-card:nth-child(5) {
-    transform: rotate(-2deg);
-}
+            overflow: hidden;
+        }
 
-.work-card:hover {
-    transform: translateY(-15px) rotate(0deg) scale(1.04);
+        .hero-panel::before {
+            content: "";
 
-    z-index: 5;
+            position: absolute;
+            inset: 0;
 
-    box-shadow: 10px 10px 0 var(--red);
-}
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,0,40,.25),
+                    transparent 40%,
+                    rgba(40,20,255,.25)
+                );
+        }
 
-.work-card img {
-    width: 100%;
-    height: 330px;
+        .rec {
+            position: absolute;
 
-    object-fit: cover;
+            top: 25px;
+            right: 25px;
 
-    display: block;
+            padding: 12px 20px;
 
-    transition: .5s;
-}
+            background: var(--red);
 
-.work-card:hover img {
-    transform: scale(1.08);
-}
+            font-weight: 900;
 
-.work-info {
-    padding: 15px;
+            z-index: 3;
+        }
 
-    background: white;
-    color: black;
-}
+        .rec::before {
+            content: "●";
+            margin-right: 8px;
+        }
 
-.work-number {
-    font-family: "Bangers";
-    font-size: 25px;
+        .hero-panel-content {
+            position: absolute;
 
-    color: var(--red);
-}
+            inset: 0;
 
-.work-title {
-    font-weight: 900;
-    text-transform: uppercase;
-}
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-/* =========================================================
-   ABOUT
-========================================================= */
+            text-align: center;
+        }
 
-.about-grid {
-    display: grid;
+        .hero-panel-content h2 {
+            font-family: "Bangers", cursive;
 
-    grid-template-columns: 1fr 1fr;
+            font-size: 100px;
 
-    gap: 70px;
+            color: white;
 
-    align-items: center;
-}
+            text-shadow:
+                7px 6px 0 var(--red),
+                -6px -5px 0 var(--blue);
 
-.about-image {
-    border: 5px solid white;
+            transform: rotate(-5deg);
+        }
 
-    transform: rotate(-3deg);
+        .boom {
+            position: absolute;
 
-    box-shadow:
-        10px 10px 0 var(--red),
-        -10px -10px 0 var(--blue);
+            right: 25px;
+            bottom: 30px;
 
-    overflow: hidden;
-}
+            font-family: "Bangers", cursive;
 
-.about-image img {
-    width: 100%;
-    display: block;
-}
+            font-size: 55px;
 
-.about-text p {
-    margin-top: 30px;
+            color: var(--yellow);
 
-    color: #c7c7c7;
+            transform: rotate(-8deg);
 
-    line-height: 1.8;
-    font-size: 18px;
-}
+            text-shadow:
+                4px 4px 0 var(--red),
+                -3px -3px 0 var(--blue);
+        }
 
-.skills {
-    margin-top: 35px;
 
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-}
+        /* =========================================================
+           ABOUT
+        ========================================================= */
 
-.skill {
-    padding: 12px 17px;
+        #about {
+            display: grid;
 
-    border: 2px solid white;
+            grid-template-columns: .8fr 1.2fr;
 
-    background: #111;
+            gap: 80px;
 
-    font-weight: 800;
+            align-items: center;
+        }
 
-    transition: .25s;
-}
+        .about-image {
+            min-height: 550px;
 
-.skill:hover {
-    background: var(--yellow);
-    color: black;
+            border: 5px solid white;
 
-    transform: rotate(-3deg);
-}
+            background:
+                radial-gradient(circle at center, #3920ff, #090909 65%);
 
-/* =========================================================
-   SERVICES
-========================================================= */
+            position: relative;
 
-.services {
-    background: #101010;
-}
+            transform: rotate(-2deg);
 
-.services-grid {
-    display: grid;
+            box-shadow:
+                12px 12px 0 var(--red),
+                -10px -10px 0 var(--blue);
+        }
 
-    grid-template-columns: repeat(3,1fr);
+        .about-image::after {
+            content: "MANAV";
 
-    gap: 25px;
-}
+            position: absolute;
 
-.service {
-    padding: 35px;
+            bottom: 25px;
+            left: 25px;
 
-    border: 3px solid white;
+            font-family: "Bangers", cursive;
 
-    position: relative;
+            font-size: 90px;
 
-    background: #0b0b0b;
+            color: rgba(255,255,255,.1);
+        }
 
-    transition: .3s;
-}
 
-.service:hover {
-    transform: translate(-7px,-7px);
+        .about-content h2 {
+            font-family: "Bangers", cursive;
 
-    box-shadow: 10px 10px 0 var(--red);
-}
+            font-size: clamp(70px, 8vw, 130px);
 
-.service-number {
-    font-family: "Bangers";
-    font-size: 60px;
+            line-height: .8;
 
-    color: var(--blue);
-}
+            text-shadow:
+                6px 6px 0 var(--red),
+                -5px -4px 0 var(--blue);
 
-.service h3 {
-    font-family: "Bangers";
-    font-size: 38px;
+            margin-bottom: 40px;
+        }
 
-    margin: 10px 0;
-}
+        .about-content h2 span {
+            color: var(--yellow);
 
-.service p {
-    color: #aaa;
-    line-height: 1.6;
-}
+            text-shadow:
+                6px 6px 0 var(--red),
+                -5px -4px 0 var(--blue);
+        }
 
-/* =========================================================
-   CONTACT
-========================================================= */
+        .about-story {
+            font-size: 19px;
+            line-height: 1.8;
+            color: #d5d5d5;
+        }
 
-.contact {
-    text-align: center;
+        .about-story p {
+            margin-bottom: 22px;
+        }
 
-    min-height: 70vh;
+        .about-story .highlight {
+            color: white;
+            font-weight: 800;
+        }
 
-    display: flex;
-    align-items: center;
-}
+        .story-line {
+            color: var(--red);
+            font-weight: 900;
+            font-size: 23px;
+        }
 
-.contact-inner {
-    width: 100%;
-}
 
-.contact-title {
-    font-family: "Bangers";
+        /* =========================================================
+           WORK
+        ========================================================= */
 
-    font-size: clamp(70px, 12vw, 170px);
+        #work {
+            padding-top: 100px;
+        }
 
-    line-height: .8;
+        .work-heading {
+            font-family: "Bangers", cursive;
 
-    text-shadow:
-        8px 8px 0 var(--red),
-        -6px -6px 0 var(--blue);
-}
+            font-size: clamp(75px, 10vw, 150px);
 
-.contact p {
-    max-width: 600px;
+            line-height: .8;
 
-    margin: 40px auto;
+            text-shadow:
+                7px 6px 0 var(--red),
+                -6px -5px 0 var(--blue);
 
-    color: #bbb;
+            margin-bottom: 25px;
+        }
 
-    font-size: 19px;
-    line-height: 1.7;
-}
+        .work-intro {
+            color: #bbb;
 
-.contact-btn {
-    display: inline-block;
+            font-size: 18px;
 
-    padding: 18px 35px;
+            margin-bottom: 60px;
+        }
 
-    background: var(--yellow);
 
-    color: black;
+        /* PROJECT GRID */
 
-    font-family: "Bangers";
-    font-size: 28px;
+        .work-grid {
+            display: grid;
 
-    text-decoration: none;
+            grid-template-columns: repeat(5, 1fr);
 
-    transform: rotate(-2deg);
+            gap: 20px;
+        }
 
-    box-shadow: 10px 10px 0 var(--red);
 
-    transition: .3s;
-}
+        /* PROJECT CARD */
 
-.contact-btn:hover {
-    transform: rotate(2deg) scale(1.05);
-}
+        .work-card {
+            display: block;
 
-/* =========================================================
-   FOOTER
-========================================================= */
+            background: white;
+            color: #000;
 
-footer {
-    padding: 35px 7vw;
+            border: 4px solid white;
 
-    border-top: 2px solid #222;
+            transform: rotate(var(--rotation));
 
-    display: flex;
+            transition: .3s ease;
 
-    justify-content: space-between;
+            box-shadow: 8px 8px 0 var(--red);
 
-    color: #777;
+            overflow: hidden;
+        }
 
-    font-size: 13px;
-}
+        .work-card:nth-child(1) {
+            --rotation: -2deg;
+        }
 
-/* =========================================================
-   FLOATING COMIC ELEMENTS
-========================================================= */
+        .work-card:nth-child(2) {
+            --rotation: 2deg;
+        }
 
-.comic-word {
-    position: absolute;
+        .work-card:nth-child(3) {
+            --rotation: -1deg;
+        }
 
-    font-family: "Bangers";
+        .work-card:nth-child(4) {
+            --rotation: 2deg;
+        }
 
-    font-size: 40px;
+        .work-card:nth-child(5) {
+            --rotation: -2deg;
+        }
 
-    pointer-events: none;
+        .work-card:hover {
+            transform: rotate(0deg) translateY(-15px) scale(1.03);
 
-    opacity: .8;
-}
+            box-shadow:
+                12px 12px 0 var(--blue);
+        }
 
-.comic-word.one {
-    left: 3%;
-    top: 25%;
-    color: var(--blue);
-    transform: rotate(-15deg);
-}
 
-.comic-word.two {
-    right: 3%;
-    top: 70%;
-    color: var(--red);
-    transform: rotate(10deg);
-}
+        /* PROJECT IMAGE */
 
-.comic-word.three {
-    left: 4%;
-    bottom: 15%;
-    color: var(--yellow);
-    transform: rotate(-8deg);
-}
+        .project-image {
+            height: 330px;
 
-/* =========================================================
-   MOBILE
-========================================================= */
+            background:
+                linear-gradient(
+                    135deg,
+                    #242424,
+                    #090909
+                );
 
-@media (max-width: 1000px) {
+            position: relative;
 
-    .nav-links {
-        display: none;
-    }
+            overflow: hidden;
+        }
 
-    .hero-grid,
-    .about-grid {
-        grid-template-columns: 1fr;
-    }
+        .project-image::before {
+            content: "";
 
-    .hero-panel {
-        margin-top: 30px;
-    }
+            position: absolute;
 
-    .work-grid {
-        grid-template-columns: repeat(2,1fr);
-    }
+            inset: 0;
 
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,36,56,.35) 1px,
+                    transparent 1px
+                );
 
-}
+            background-size: 10px 10px;
+        }
 
-@media (max-width: 600px) {
+        .project-image::after {
+            content: "PLAY";
 
-    section {
-        padding: 90px 5vw;
-    }
+            position: absolute;
 
-    .navbar {
-        padding: 0 5vw;
-    }
+            left: 50%;
+            top: 50%;
 
-    .nav-cta {
-        display: none;
-    }
+            transform: translate(-50%,-50%);
 
-    .hero {
-        padding-top: 130px;
-    }
+            width: 70px;
+            height: 70px;
 
-    .hero-name {
-        font-size: 85px;
-    }
+            border-radius: 50%;
 
-    .hero-panel img {
-        height: 430px;
-    }
+            background: var(--red);
 
-    .showreel-panel img {
-        height: 400px;
-    }
+            color: white;
 
-    .showreel-title {
-        font-size: 70px;
-    }
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    .work-grid {
-        grid-template-columns: 1fr;
-    }
+            font-weight: 900;
 
-    .work-card img {
-        height: 420px;
-    }
+            border: 3px solid white;
+        }
 
-    footer {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
 
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
+        /* PROJECT INFO */
 
-.reveal {
-    opacity: 0;
-    transform: translateY(50px);
+        .work-info {
+            padding: 20px;
+        }
 
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
-}
+        .work-number {
+            font-family: "Bangers", cursive;
 
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+            font-size: 45px;
 
-</style>
+            color: var(--blue);
+
+            line-height: 1;
+        }
+
+        .work-title {
+            font-size: 17px;
+
+            font-weight: 900;
+
+            margin-top: 8px;
+        }
+
+
+        /* =========================================================
+           SKILLS
+        ========================================================= */
+
+        #skills {
+            text-align: center;
+        }
+
+        .skills-heading {
+            font-family: "Bangers", cursive;
+
+            font-size: clamp(75px, 9vw, 130px);
+
+            text-shadow:
+                7px 6px 0 var(--red),
+                -6px -5px 0 var(--blue);
+
+            margin-bottom: 60px;
+        }
+
+        .skills-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .skill-card {
+            min-height: 240px;
+
+            padding: 35px;
+
+            border: 3px solid white;
+
+            text-align: left;
+
+            position: relative;
+
+            background: rgba(255,255,255,.02);
+
+            transition: .25s ease;
+        }
+
+        .skill-card:hover {
+            transform: translate(-6px,-6px);
+
+            box-shadow:
+                8px 8px 0 var(--red),
+                -7px -7px 0 var(--blue);
+        }
+
+        .skill-number {
+            font-family: "Bangers", cursive;
+
+            color: var(--blue);
+
+            font-size: 55px;
+        }
+
+        .skill-card h3 {
+            font-family: "Bangers", cursive;
+
+            font-size: 32px;
+
+            margin: 15px 0;
+        }
+
+        .skill-card p {
+            color: #aaa;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================================
+           CONTACT
+        ========================================================= */
+
+        #contact {
+            text-align: center;
+
+            min-height: 80vh;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-heading {
+            font-family: "Bangers", cursive;
+
+            font-size: clamp(90px, 13vw, 190px);
+
+            line-height: .75;
+
+            text-shadow:
+                8px 7px 0 var(--red),
+                -7px -6px 0 var(--blue);
+
+            margin-bottom: 35px;
+        }
+
+        .contact-text {
+            max-width: 650px;
+
+            color: #bbb;
+
+            font-size: 20px;
+
+            line-height: 1.6;
+
+            margin-bottom: 40px;
+        }
+
+
+        /* CONTACT LINKS */
+
+        .contact-links {
+            display: flex;
+
+            gap: 20px;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+        }
+
+        .contact-link {
+            padding: 18px 25px;
+
+            border: 3px solid white;
+
+            font-weight: 900;
+
+            background: #0b0b0b;
+
+            transition: .25s ease;
+        }
+
+        .contact-link:hover {
+            background: var(--yellow);
+            color: #000;
+
+            transform: rotate(-2deg) translateY(-5px);
+
+            box-shadow: 8px 8px 0 var(--red);
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,.15);
+
+            padding: 35px 40px;
+
+            text-align: center;
+
+            color: #777;
+
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+
+        /* =========================================================
+           COMIC DECORATIONS
+        ========================================================= */
+
+        .comic-decoration {
+            position: fixed;
+
+            pointer-events: none;
+
+            font-family: "Bangers", cursive;
+
+            z-index: -1;
+
+            opacity: .5;
+        }
+
+        .decoration-one {
+            left: 2%;
+            top: 40%;
+
+            color: var(--blue);
+
+            font-size: 45px;
+
+            transform: rotate(-15deg);
+        }
+
+        .decoration-two {
+            right: 2%;
+            top: 60%;
+
+            color: var(--red);
+
+            font-size: 55px;
+
+            transform: rotate(10deg);
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 1000px) {
+
+            .nav {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-button {
+                padding: 12px 16px;
+                font-size: 12px;
+            }
+
+            section {
+                padding: 100px 25px;
+            }
+
+            #home {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-panel {
+                min-height: 450px;
+            }
+
+            #about {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                min-height: 400px;
+            }
+
+            .work-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .logo {
+                font-size: 32px;
+            }
+
+            .hero-title {
+                font-size: 90px;
+            }
+
+            .hero-role {
+                font-size: 14px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .button {
+                text-align: center;
+            }
+
+            .hero-panel {
+                min-height: 350px;
+            }
+
+            .hero-panel-content h2 {
+                font-size: 65px;
+            }
+
+            .boom {
+                font-size: 40px;
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-image {
+                height: 380px;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .contact-link {
+                width: 100%;
+            }
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-<!-- =======================================================
-     NAVIGATION
-======================================================= -->
 
-<header class="navbar">
+    <!-- =========================================================
+         COMIC DECORATIONS
+    ========================================================== -->
 
-    <div class="logo">
-        MANAV
-        <span>EDITZ</span>
-    </div>
-
-    <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-
-    <a href="#contact" class="nav-cta">
-        LET'S WORK!
-    </a>
-
-</header>
-
-
-<!-- =======================================================
-     HERO
-======================================================= -->
-
-<section class="hero" id="home">
-
-    <div class="container hero-grid">
-
-        <div class="hero-copy reveal">
-
-            <div class="small-tag">
-                YO! I'M
-            </div>
-
-            <h1 class="hero-name">
-                MANAV
-            </h1>
-
-            <div class="role">
-                VIDEO EDITOR / MOTION DESIGNER
-            </div>
-
-            <p class="hero-description">
-                I turn raw footage into stories.
-                <strong>Every cut, every frame, every transition</strong>
-                is designed to make your video impossible to ignore.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="#showreel" class="btn btn-primary">
-                    WATCH SHOWREEL →
-                </a>
-
-                <a href="#work" class="btn btn-secondary">
-                    VIEW MY WORK
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <div class="hero-panel reveal">
-
-            <!-- REPLACE WITH YOUR IMAGE -->
-            <img
-                src="images/hero.jpg"
-                alt="Manav video editing portfolio"
-            >
-
-            <div class="rec">
-                REC
-            </div>
-
-            <div class="boom">
-                BOOM!
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="comic-word one">
+    <div class="comic-decoration decoration-one">
         FRAME 001
     </div>
 
-    <div class="comic-word two">
+    <div class="comic-decoration decoration-two">
         WOW!
     </div>
 
-</section>
+
+    <!-- =========================================================
+         NAVIGATION
+    ========================================================== -->
+
+    <header>
+
+        <nav class="nav">
+
+            <a href="#home" class="logo">
+                MANAV
+                <span>EDITZ</span>
+            </a>
+
+            <div class="nav-links">
+
+                <a href="#home">Home</a>
+
+                <a href="#about">About</a>
+
+                <a href="#work">Work</a>
+
+                <a href="#skills">Skills</a>
+
+                <a href="#contact">Contact</a>
+
+            </div>
+
+            <a href="#contact" class="nav-button">
+                Let's Work!
+            </a>
+
+        </nav>
+
+    </header>
 
 
-<!-- =======================================================
-     SHOWREEL
-======================================================= -->
+    <!-- =========================================================
+         HERO
+    ========================================================== -->
 
-<section class="showreel" id="showreel">
+    <main>
 
-    <div class="container">
+        <section id="home">
 
-        <div class="showreel-panel reveal">
+            <div class="hero-content">
 
-            <!-- REPLACE WITH SHOWREEL THUMBNAIL -->
-            <img
-                src="images/showreel.jpg"
-                alt="Manav showreel"
-            >
-
-            <div class="showreel-overlay">
-
-                <div class="showreel-title">
-                    SHOWREEL
+                <div class="comic-small">
+                    YO! I'M
                 </div>
 
-                <div class="play-button" onclick="playShowreel()">
-                    ▶
+                <h1 class="hero-title">
+                    MANAV
+                </h1>
+
+                <div class="hero-role">
+                    VIDEO EDITOR / MOTION DESIGNER
+                </div>
+
+                <p class="hero-description">
+                    I turn raw footage into stories.
+                    <strong>Every cut, every frame, every transition</strong>
+                    is designed to make your video impossible to ignore.
+                </p>
+
+                <div class="buttons">
+
+                    <a href="#showreel" class="button primary">
+                        Watch Showreel →
+                    </a>
+
+                    <a href="#work" class="button secondary">
+                        View My Work
+                    </a>
+
                 </div>
 
             </div>
 
-        </div>
 
-    </div>
+            <div class="hero-panel">
 
-</section>
+                <div class="rec">
+                    REC
+                </div>
 
+                <div class="hero-panel-content">
 
-<!-- =======================================================
-     SELECTED WORK
-======================================================= -->
+                    <h2>
+                        YOUR<br>
+                        STORY
+                    </h2>
 
-<section class="work" id="work">
+                </div>
 
-    <div class="container">
+                <div class="boom">
+                    BOOM!
+                </div>
 
-        <div class="section-heading reveal">
+            </div>
 
-            <h2 class="comic-title">
-                SELECTED
-                <br>
-                <span class="red">WORK</span>
-            </h2>
-
-            <p>
-                A few projects I've edited, animated,
-                graded and brought to life.
-            </p>
-
-        </div>
+        </section>
 
 
-        <div class="work-grid">
+        <!-- =====================================================
+             SHOWREEL
+        ====================================================== -->
 
+        <section id="showreel">
 
-            <div class="work-card reveal">
+            <div class="section-label">
+                2026 SHOWREEL
+            </div>
 
-                <img
-                    src="images/project1.jpg"
-                    alt="Commercial project"
+            <div class="hero-panel" style="min-height: 550px;">
+
+                <a
+                    href="PASTE_YOUR_SHOWREEL_LINK_HERE"
+                    target="_blank"
+                    rel="noopener noreferrer"
                 >
 
-                <div class="work-info">
+                    <div class="hero-panel-content">
 
-                    <div class="work-number">
+                        <h2>
+                            SHOWREEL<br>
+                            PLAY ▶
+                        </h2>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             ABOUT
+        ====================================================== -->
+
+        <section id="about">
+
+            <div class="about-image">
+
+                <!--
+                YOU CAN ADD YOUR PHOTO HERE LATER.
+
+                Example:
+
+                <img src="images/manav.jpg" alt="Manav Patel">
+
+                -->
+
+            </div>
+
+
+            <div class="about-content">
+
+                <h2>
+                    ABOUT<br>
+                    <span>ME</span>
+                </h2>
+
+
+                <div class="about-story">
+
+                    <p>
+                        Alright… Let's do this one last time.
+                        Hello, my name is <span class="highlight">Manav Patel.</span>
+                    </p>
+
+                    <p>
+                        I was bitten by a radioactive editing monster,
+                        and for the last year and a half, I have been editing.
+                        Let me tell you how I became the editor behind the screen.
+                    </p>
+
+                    <p class="story-line">
+                        There are a million ways to tell a story.
+                        <br>
+                        This is mine.
+                    </p>
+
+                    <p>
+                        I'm Manav.
+                        <br>
+                        I cut the frames.
+                        <br>
+                        I build the motion.
+                        <br>
+                        I turn raw footage… into something you can't look away from.
+                    </p>
+
+                    <p class="story-line">
+                        This is my timeline.
+                        <br>
+                        Welcome to my world.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             WORK
+        ====================================================== -->
+
+        <section id="work">
+
+            <div class="section-label">
+                SELECTED WORK
+            </div>
+
+            <h2 class="work-heading">
+                MY<br>
+                PROJECTS
+            </h2>
+
+            <p class="work-intro">
+                A few projects I've edited, animated, graded and brought to life.
+                Click any project to watch it.
+            </p>
+
+
+            <div class="work-grid">
+
+
+                <!-- PROJECT 01 -->
+
+                <a
+                    class="work-card"
+                    href="PASTE_YOUR_PROJECT_01_LINK_HERE"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="project-image"></div>
+
+                    <div class="work-info">
+
+                        <div class="work-number">
+                            01
+                        </div>
+
+                        <div class="work-title">
+                            WATCH PROJECT →
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- PROJECT 02 -->
+
+                <a
+                    class="work-card"
+                    href="PASTE_YOUR_PROJECT_02_LINK_HERE"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="project-image"></div>
+
+                    <div class="work-info">
+
+                        <div class="work-number">
+                            02
+                        </div>
+
+                        <div class="work-title">
+                            WATCH PROJECT →
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- PROJECT 03 -->
+
+                <a
+                    class="work-card"
+                    href="PASTE_YOUR_PROJECT_03_LINK_HERE"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="project-image"></div>
+
+                    <div class="work-info">
+
+                        <div class="work-number">
+                            03
+                        </div>
+
+                        <div class="work-title">
+                            WATCH PROJECT →
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- PROJECT 04 -->
+
+                <a
+                    class="work-card"
+                    href="PASTE_YOUR_PROJECT_04_LINK_HERE"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="project-image"></div>
+
+                    <div class="work-info">
+
+                        <div class="work-number">
+                            04
+                        </div>
+
+                        <div class="work-title">
+                            WATCH PROJECT →
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- PROJECT 05 -->
+
+                <a
+                    class="work-card"
+                    href="PASTE_YOUR_PROJECT_05_LINK_HERE"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="project-image"></div>
+
+                    <div class="work-info">
+
+                        <div class="work-number">
+                            05
+                        </div>
+
+                        <div class="work-title">
+                            WATCH PROJECT →
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             SKILLS
+        ====================================================== -->
+
+        <section id="skills">
+
+            <h2 class="skills-heading">
+                WHAT I DO
+            </h2>
+
+
+            <div class="skills-grid">
+
+
+                <div class="skill-card">
+
+                    <div class="skill-number">
                         01
                     </div>
 
-                    <div class="work-title">
-                        Commercial
-                    </div>
+                    <h3>
+                        VIDEO EDITING
+                    </h3>
+
+                    <p>
+                        Clean cuts, pacing, storytelling,
+                        transitions and edits designed around
+                        your vision.
+                    </p>
 
                 </div>
 
-            </div>
 
+                <div class="skill-card">
 
-            <div class="work-card reveal">
-
-                <img
-                    src="images/project2.jpg"
-                    alt="Gaming project"
-                >
-
-                <div class="work-info">
-
-                    <div class="work-number">
+                    <div class="skill-number">
                         02
                     </div>
 
-                    <div class="work-title">
-                        Gaming
-                    </div>
+                    <h3>
+                        MOTION
+                    </h3>
+
+                    <p>
+                        Motion graphics, typography,
+                        animations and dynamic visual effects.
+                    </p>
 
                 </div>
 
-            </div>
 
+                <div class="skill-card">
 
-            <div class="work-card reveal">
-
-                <img
-                    src="images/project3.jpg"
-                    alt="Social media project"
-                >
-
-                <div class="work-info">
-
-                    <div class="work-number">
+                    <div class="skill-number">
                         03
                     </div>
 
-                    <div class="work-title">
-                        Social Media
-                    </div>
+                    <h3>
+                        COLOR + SOUND
+                    </h3>
+
+                    <p>
+                        Color grading, sound design,
+                        music synchronization and finishing touches.
+                    </p>
 
                 </div>
 
-            </div>
-
-
-            <div class="work-card reveal">
-
-                <img
-                    src="images/project4.jpg"
-                    alt="Cinematic project"
-                >
-
-                <div class="work-info">
-
-                    <div class="work-number">
-                        04
-                    </div>
-
-                    <div class="work-title">
-                        Cinematic
-                    </div>
-
-                </div>
 
             </div>
 
+        </section>
 
-            <div class="work-card reveal">
 
-                <img
-                    src="images/project5.jpg"
-                    alt="Music video project"
-                >
+        <!-- =====================================================
+             CONTACT
+        ====================================================== -->
 
-                <div class="work-info">
+        <section id="contact">
 
-                    <div class="work-number">
-                        05
-                    </div>
-
-                    <div class="work-title">
-                        Music Video
-                    </div>
-
-                </div>
-
+            <div class="section-label">
+                GOT A PROJECT?
             </div>
 
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     ABOUT
-======================================================= -->
-
-<section id="about">
-
-    <div class="container about-grid">
-
-        <div class="about-image reveal">
-
-            <!-- REPLACE WITH YOUR PHOTO -->
-            <img
-                src="images/manav.jpg"
-                alt="Manav Patel"
-            >
-
-        </div>
-
-
-        <div class="about-text reveal">
-
-            <h2 class="comic-title">
-                ABOUT
-                <br>
-                <span class="yellow">ME</span>
+            <h2 class="contact-heading">
+                LET'S<br>
+                WORK!
             </h2>
 
-            <p>
-                Hey, I'm Manav Patel — a video editor and
-                motion designer who loves turning ideas into
-                visuals that hit different.
+            <p class="contact-text">
+                Have an idea that deserves to look insane?
+                Let's turn it into something people remember.
             </p>
 
-            <p>
-                I've been editing for the last
-                <strong>2 years</strong>, working with cuts,
-                motion graphics, sound, effects and color
-                to create videos that actually feel alive.
-            </p>
 
-            <div class="skills" id="skills">
+            <div class="contact-links">
 
-                <div class="skill">VIDEO EDITING</div>
-                <div class="skill">MOTION GRAPHICS</div>
-                <div class="skill">COLOR GRADING</div>
-                <div class="skill">SOUND DESIGN</div>
-                <div class="skill">VFX</div>
+
+                <!-- EMAIL -->
+
+                <a
+                    class="contact-link"
+                    href="mailto:manav251105@gmail.com"
+                >
+                    ✉ EMAIL ME
+                </a>
+
+
+                <!-- INSTAGRAM -->
+
+                <a
+                    class="contact-link"
+                    href="https://www.instagram.com/manavpatel2511/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    ◎ INSTAGRAM
+                </a>
+
 
             </div>
 
-        </div>
+        </section>
 
-    </div>
+    </main>
 
-</section>
 
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
 
-<!-- =======================================================
-     SERVICES
-======================================================= -->
+    <footer>
 
-<section class="services">
+        © 2026 <strong>MANAV EDITZ</strong> —
+        Video Editor & Motion Designer.
 
-    <div class="container">
+    </footer>
 
-        <div class="section-heading reveal">
-
-            <h2 class="comic-title">
-                WHAT
-                <span class="yellow">I DO</span>
-            </h2>
-
-        </div>
-
-
-        <div class="services-grid">
-
-            <div class="service reveal">
-
-                <div class="service-number">
-                    01
-                </div>
-
-                <h3>
-                    VIDEO EDITING
-                </h3>
-
-                <p>
-                    Clean cuts, pacing, storytelling,
-                    transitions and edits designed
-                    around your vision.
-                </p>
-
-            </div>
-
-
-            <div class="service reveal">
-
-                <div class="service-number">
-                    02
-                </div>
-
-                <h3>
-                    MOTION
-                </h3>
-
-                <p>
-                    Motion graphics, typography,
-                    animations and dynamic visual
-                    effects.
-                </p>
-
-            </div>
-
-
-            <div class="service reveal">
-
-                <div class="service-number">
-                    03
-                </div>
-
-                <h3>
-                    COLOR + SOUND
-                </h3>
-
-                <p>
-                    Color grading, sound design,
-                    music synchronization and
-                    finishing touches.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     CONTACT
-======================================================= -->
-
-<section class="contact" id="contact">
-
-    <div class="container contact-inner reveal">
-
-        <h2 class="contact-title">
-            HAVE A
-            <br>
-            PROJECT?
-        </h2>
-
-        <p>
-            Have an idea that deserves to look insane?
-            Let's turn it into something people remember.
-        </p>
-
-        <!-- CHANGE EMAIL -->
-        <a
-            href="mailto:YOUR_EMAIL@gmail.com"
-            class="contact-btn"
-        >
-            LET'S WORK TOGETHER →
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     FOOTER
-======================================================= -->
-
-<footer>
-
-    <div>
-        © 2026 MANAV PATEL
-    </div>
-
-    <div>
-        VIDEO EDITOR • MOTION DESIGNER
-    </div>
-
-</footer>
-
-
-<script>
-
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
-
-const observer = new IntersectionObserver(
-    (entries) => {
-
-        entries.forEach(entry => {
-
-            if (entry.isIntersecting) {
-
-                entry.target.classList.add("visible");
-
-            }
-
-        });
-
-    },
-    {
-        threshold: 0.15
-    }
-);
-
-
-document
-    .querySelectorAll(".reveal")
-    .forEach(element => observer.observe(element));
-
-
-/* =========================================================
-   SHOWREEL
-========================================================= */
-
-function playShowreel() {
-
-    /*
-        Later we can replace this with your actual
-        YouTube/Vimeo/video player.
-    */
-
-    alert("SHOWREEL PLAYER — ADD YOUR VIDEO HERE!");
-
-}
-
-
-/* =========================================================
-   MOUSE PARALLAX
-========================================================= */
-
-const heroPanel = document.querySelector(".hero-panel");
-
-document.addEventListener("mousemove", (e) => {
-
-    if (!heroPanel) return;
-
-    const x = (window.innerWidth / 2 - e.clientX) / 50;
-    const y = (window.innerHeight / 2 - e.clientY) / 50;
-
-    heroPanel.style.transform =
-        `rotate(2deg) translate(${x}px, ${y}px)`;
-
-});
-
-
-/* =========================================================
-   GLITCH EFFECT
-========================================================= */
-
-const name = document.querySelector(".hero-name");
-
-setInterval(() => {
-
-    if (!name) return;
-
-    name.style.transform =
-        `translate(${Math.random() * 2 - 1}px, ${Math.random() * 2 - 1}px)`;
-
-    setTimeout(() => {
-
-        name.style.transform = "translate(0,0)";
-
-    }, 80);
-
-}, 3000);
-
-</script>
 
 </body>
 </html>
